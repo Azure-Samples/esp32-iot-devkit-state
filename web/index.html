@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<title>ESP32 State</title>
+<link href="css/style.css" rel="stylesheet">
+<script src="js/vue.min.js"></script>
+<script src="js/vue-resource.min.js"></script>
+</head>
+<body>
+<div class="esp32" id="esp32" v-cloak>
+    <div class="screen"></div>
+    <div class="buttonA"></div>
+    <div class="buttonB"></div>
+    <div class="buttonC"></div>
+    <div class="info" v-show="lastUpdated !== '' && this.reportedTwin.restarted">
+        <div class="wifi_state">
+            <p>{{ reportedTwin.Wifi || 'N/A' }}</p>
+        </div>
+        <div class="firmware_version">
+            <p>Device ID: {{ deviceId }}</p>
+            <p>Last Updated:</p>
+            <p>{{ lastUpdated }}</p>
+        </div>
+    </div>
+    <div class="connection_status" v-show="loading">
+        <p>Loading...</p>
+    </div>
+    <div class="connection_status" v-show="!loading && !this.reportedTwin.restarted">
+        <p>Restart...</p>
+    </div>
+    <div class="inpt_box" v-show="!functionAppNameSet">
+        <input type="text" spellcheck="false" v-model="functionAppName" placeholder="Function App Name"><button v-on:click="getState()">Connect</button>
+    </div>
+    <div class="restart_button" v-on:click="deviceRestart()">Restart</div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

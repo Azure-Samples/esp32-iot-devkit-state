@@ -1,0 +1,18 @@
+{
+    "folders": [
+        {
+            "path": "Device"
+        },
+        {
+            "path": "Functions"
+        },
+        {
+            "path": "web"
+        }
+    ],
+    "settings": {
+        "IoTWorkbench.BoardId": "esp32",
+        "IoTWorkbench.DevicePath": "Device",
+        "IoTWorkbench.FunctionPath": "Functions",
+    }
+}
